@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search">
+        <form action="">
+          <select name="filters" id="filters">
+            <option value="name">name</option>
+            <option value="price">price</option>
+            <option value="date-new">date-new</option>
+            <option value="date-old">date-old</option>
+            <option value="stock">stock</option>
+          </select>
+          <input type="text" id="search" placeholder="search" />
+          <input type="submit" id="submit" value="search" />
+        </form>
+      </div>
+      <div class="products"></div>
+      <div class="product-modal">
+        <div class="product-modal-inner">
+          <form action="" id="prodForm">
+            <div class="field">
+              <div class="field-inner">
+                <label for="name">name</label>
+                <input type="text" id="name" />
+              </div>
+              <div class="field-inner">
+                <label for="price">price</label>
+                <input type="text" id="price" />
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-inner">
+                <label for="description">description</label>
+                <input type="text" id="description" />
+              </div>
+              <div class="field-inner">
+                <label for="stock">stock quantity</label>
+                <input type="text" id="stock" />
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-inner">
+                <label for="description">image</label>
+                <input type="file" id="image" />
+              </div>
+              <p class="resError"></p>
+              <div class="field-inner">
+                <input type="submit" id="submit" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="manus">
+        <a href="home">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24px"
+            height="24px"
+          >
+            <path
+              d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 11 21 L 11 15 L 13 15 L 13 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z M 12 4.7910156 L 18 10.191406 L 18 11 L 18 19 L 15 19 L 15 13 L 9 13 L 9 19 L 6 19 L 6 10.191406 L 12 4.7910156 z"
+            />
+          </svg>
+        </a>
+        <div class="basket">
+          <svg
+            width="800px"
+            height="800px"
+            viewBox="0 0 64 64"
+            id="icons"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #231f20;
+                }
+              </style>
+            </defs>
+            <title />
+            <path
+              class="cls-1"
+              d="M60.53,18.71A2,2,0,0,0,59,18H48.85A15,15,0,0,0,34,5H30A15,15,0,0,0,15.15,18H5a2,2,0,0,0-1.53.71A2,2,0,0,0,3,20.35l5.33,30.3A6.51,6.51,0,0,0,14.77,56H49.23a6.51,6.51,0,0,0,6.41-5.36L61,20.35A2,2,0,0,0,60.53,18.71ZM30,9h4a11,11,0,0,1,10.81,9H19.19A11,11,0,0,1,30,9ZM51.71,49.94A2.52,2.52,0,0,1,49.23,52H14.77a2.5,2.5,0,0,1-2.47-2L7.38,22H56.62Z"
+            />
+          </svg>
+        </div>
+        <a href="profile">
+          <svg
+            width="800px"
+            height="800px"
+            viewBox="0 0 20 20"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <title>profile [#1335]</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g
+              id="Page-1"
+              stroke="none"
+              stroke-width="1"
+              fill="none"
+              fill-rule="evenodd"
+            >
+              <g
+                id="Dribbble-Light-Preview"
+                transform="translate(-420.000000, -2159.000000)"
+                fill="#000000"
+              >
+                <g id="icons" transform="translate(56.000000, 160.000000)">
+                  <path
+                    d="M374,2009 C371.794,2009 370,2007.206 370,2005 C370,2002.794 371.794,2001 374,2001 C376.206,2001 378,2002.794 378,2005 C378,2007.206 376.206,2009 374,2009 M377.758,2009.673 C379.124,2008.574 380,2006.89 380,2005 C380,2001.686 377.314,1999 374,1999 C370.686,1999 368,2001.686 368,2005 C368,2006.89 368.876,2008.574 370.242,2009.673 C366.583,2011.048 364,2014.445 364,2019 L366,2019 C366,2014 369.589,2011 374,2011 C378.411,2011 382,2014 382,2019 L384,2019 C384,2014.445 381.417,2011.048 377.758,2009.673"
+                    id="profile-[#1335]"
+                  ></path>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
