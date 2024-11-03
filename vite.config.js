@@ -9,7 +9,8 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'src/index.html'), // Asosiy fayl
         login: path.resolve(__dirname, 'src/login.html'), // Login sahifasi
-        signIn:path.resolve(__dirname,'src/sign-in.html')
+        signIn:path.resolve(__dirname,'src/sign-in.html'),
+        profile:path.resolve(__dirname,'src/profile.html')
       }
     },
     emptyOutDir: true, // `dist` papkasini bo'sh qilish

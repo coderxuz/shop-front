@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
   const gender = document.querySelector("#gender").value;
   const role = document.querySelector("#role").value;
   axios
-    .post("http://192.168.1.15:8000/auth/sign-up", {
+    .post("http://192.168.1.15:8080/auth/sign-up", {
       first_name: first_name,
       last_name: last_name,
       email: email,

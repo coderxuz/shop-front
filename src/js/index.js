@@ -5,10 +5,10 @@ const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
 const basketOrAdd = document.querySelector(".basket");
 const productsDiv = document.querySelector(".products");
- const refresh = () => {
+const refresh = () => {
   axios
-    .get("http://192.168.1.15:8000/auth/refresh", {
-      headers: { Authorization: `Bearer ${accessToken}` },
+    .get("http://192.168.1.15:8080/auth/refresh", {
+      headers: { Authorization: `Bearer ${refreshToken}` },
     })
     .then((res) => {
       localStorage.setItem("accessToken", res.data.access_token);
@@ -20,7 +20,7 @@ const productsDiv = document.querySelector(".products");
 };
 window.addEventListener("DOMContentLoaded", (e) => {
   axios
-    .get("http://192.168.1.15:8000/prods", {
+    .get("http://192.168.1.15:8080/prods", {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
     .then((res) => {
@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         localStorage.setItem("seller_have", "false");
       }
       for (let item of products) {
-        productsDiv.innerHTML += `<a href="http://localhost:5173/product.html?id=${item.id}">
+        productsDiv.innerHTML += `<a href="http://192.168.1.15:5173/product?id=${item.id}">
           <div class="products-card">
             <img src="${item.img}" alt="" />
             <h2>${item.name}</h2>
@@ -70,7 +70,7 @@ prodForm.addEventListener("submit", (e) => {
 
   // Rasmni yuklash
   axios
-    .post("http://192.168.1.15:8000/images/prod", formData, {
+    .post("http://192.168.1.15:8080/images/prod", formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "multipart/form-data",
@@ -92,7 +92,7 @@ prodForm.addEventListener("submit", (e) => {
         prod_img: response.data.image_id,
       };
 
-      return axios.post("http://192.168.1.15:8000/prods/add", data, {
+      return axios.post("http://192.168.1.15:8080/prods/add", data, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
@@ -127,12 +127,32 @@ if (sellerHave == true) {
     }
   });
 }
-const search = document.querySelector('.search form')
-search.addEventListener('submit', (e)=>{
-  e.preventDefault()
-  const sortSelect = document.querySelector('#filters')
-  const name = document.querySelector('#search')
-  axios.get(`http://192.168.1.15:8000/prods/sort?sort=${sortSelect.value}&value=${name.value}`,{headers:{Authorization:`Bearer ${accessToken}`}}).then(res=>{
-    console.log(res.data);
-  })
-})
+if (sellerHave == false) {
+  basketOrAdd.addEventListener("click", (e) => {
+    location.href = "basket.html";
+  });
+}
+const search = document.querySelector(".search form");
+search.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const sortSelect = document.querySelector("#filters");
+  const name = document.querySelector("#search");
+  axios
+    .get(
+      `http://192.168.1.15:8080/prods/sort?sort=${sortSelect.value}&value=${name.value}`,
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    )
+    .then((res) => {
+      console.log(res.data.products);
+      productsDiv.innerHTML =''
+      for (let item of res.data.products) {
+        productsDiv.innerHTML += `<a href="http://192.168.1.15:5173/product?id=${item.id}">
+          <div class="products-card">
+            <img src="${item.img}" alt="" />
+            <h2>${item.name}</h2>
+            <p>${item.price}</p>
+          </div>
+        </a>`;
+      }
+    });
+});

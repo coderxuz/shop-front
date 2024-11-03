@@ -1,0 +1,264 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+img {
+  width: 100px;
+  height: 100px;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 20px;
+  &-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    &-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      gap: 2px;
+      h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2px;
+        font-weight: 500;
+        p {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+.editing {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  button {
+    background-color: #1546b8;
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 15px;
+    width: 45%;
+  }
+}
+.orders {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 500px;
+  border: 1px solid black;
+  margin: 20px 0;
+  border-radius: 20px;
+  &::-webkit-scrollbar {
+    width: 12px; /* Width for vertical scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent; /* Set track background to transparent */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: gray; /* Color of the handle */
+    border-radius: 10px; /* Rounded corners for the handle */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: darkgray; /* Change color on hover */
+  }
+
+  // For Firefox
+  scrollbar-width: thin; /* Options: auto, thin */
+  scrollbar-color: gray transparent; /* Thumb color, Track color */
+  &-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 20px 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    &-part {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      background-color: #1546b8;
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 15px;
+    }
+  }
+}
+.photo-modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.592);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  p{
+    position: absolute;
+    top: 50px;
+    color: #fff;
+    font-size: 40px;
+    right: 40px;
+  }
+}
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  input {
+    background-color: #1546b8;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px;
+  }
+}
