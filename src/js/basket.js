@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("div");
         card.classList.value = "products-card";
         product.appendChild(card);
-        product.href = `http://192.168.1.15:5173/product?id=${item.product_id}`;
+        product.href = `https://grand-jalebi-a4003c.netlify.app/product?id=${item.product_id}`;
         products.appendChild(product);
         card.innerHTML = `
             <img src="${item.prod_img}" alt="" />

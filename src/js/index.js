@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         localStorage.setItem("seller_have", "false");
       }
       for (let item of products) {
-        productsDiv.innerHTML += `<a href="http://192.168.1.15:5173/product?id=${item.id}">
+        productsDiv.innerHTML += `<a href="https://grand-jalebi-a4003c.netlify.app/product?id=${item.id}">
           <div class="products-card">
             <img src="${item.img}" alt="" />
             <h2>${item.name}</h2>
@@ -150,7 +150,7 @@ search.addEventListener("submit", (e) => {
       console.log(res.data.products);
       productsDiv.innerHTML = "";
       for (let item of res.data.products) {
-        productsDiv.innerHTML += `<a href="http://192.168.1.15:5173/product?id=${item.id}">
+        productsDiv.innerHTML += `<a href="https://grand-jalebi-a4003c.netlify.app/product?id=${item.id}">
           <div class="products-card">
             <img src="${item.img}" alt="" />
             <h2>${item.name}</h2>
