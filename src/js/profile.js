@@ -4,11 +4,11 @@ import axios from "axios";
 const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
 const body = document.body;
-const photoModal = document.querySelector('.photo-modal')
+const photoModal = document.querySelector(".photo-modal");
 
 const refresh = () => {
   axios
-    .get("http://192.168.1.15:8080/auth/refresh", {
+    .get("https://shop-backend-xzw2.onrender.com/auth/refresh", {
       headers: { Authorization: `Bearer ${refreshToken}` },
     })
     .then((res) => {
@@ -20,7 +20,7 @@ const refresh = () => {
     });
 };
 axios
-  .get("http://192.168.1.15:8080/auth/me", {
+  .get("https://shop-backend-xzw2.onrender.com/auth/me", {
     headers: { Authorization: `Bearer ${accessToken}` },
   })
   .then((res) => {
@@ -35,7 +35,7 @@ axios
       userContainer.innerHTML = `
         <div class="user">
           <div class="user-photo">
-            <img src="http://192.168.1.15:8080/images/${data.user_img}" alt="">
+            <img src="https://shop-backend-xzw2.onrender.com/images/${data.user_img}" alt="">
           </div>
           <div class="user-data">
             <div class="user-data-field">
@@ -95,7 +95,7 @@ axios
     // Append buttons after user data
     editing.appendChild(editBtn);
     editing.appendChild(editPhoto);
-    editPhoto.addEventListener('click', ()=>{
+    editPhoto.addEventListener("click", () => {
       if (photoModal.style.display === "none" || !photoModal.style.display) {
         console.log("Opening modal...");
         photoModal.style.display = "flex";
@@ -103,9 +103,9 @@ axios
         console.log("Closing modal...");
         photoModal.style.display = "none";
       }
-    })
+    });
     axios
-      .get("http://192.168.1.15:8080/order", {
+      .get("https://shop-backend-xzw2.onrender.com/order", {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
       .then((res) => {
@@ -133,15 +133,18 @@ axios
         </div>`;
           const cancelButton = orderCard.querySelector(".cancel-btn");
           cancelButton.addEventListener("click", (e) => {
-            axios.patch(
-              `http://192.168.1.15:8080/order/cancel/${e.target.id}`,
-              {},
-              { headers: { Authorization: `Bearer ${accessToken}` } }
-            ).then(res=>{
-              console.log(res);
-            }).catch(err=>{
-              console.log(err);
-            })
+            axios
+              .patch(
+                `https://shop-backend-xzw2.onrender.com/order/cancel/${e.target.id}`,
+                {},
+                { headers: { Authorization: `Bearer ${accessToken}` } }
+              )
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           });
         });
       })
@@ -152,9 +155,9 @@ axios
   .catch((err) => {
     console.error(err);
   });
-const closeBtn = document.querySelector('.photo-modal p')
+const closeBtn = document.querySelector(".photo-modal p");
 console.log(closeBtn);
-closeBtn.addEventListener('click', ()=>{
+closeBtn.addEventListener("click", () => {
   if (photoModal.style.display === "none" || !photoModal.style.display) {
     console.log("Opening modal...");
     photoModal.style.display = "flex";
@@ -162,39 +165,40 @@ closeBtn.addEventListener('click', ()=>{
     console.log("Closing modal...");
     photoModal.style.display = "none";
   }
-})
-const editPhoto = document.getElementById('editPhoto')
-editPhoto.addEventListener('submit', (e) => {
+});
+const editPhoto = document.getElementById("editPhoto");
+editPhoto.addEventListener("submit", (e) => {
   e.preventDefault(); // Prevent default form submission behavior
 
   // Create a new FormData object
   const formData = new FormData();
 
   // Select the file input from the form
-  const fileInput = editPhoto.querySelector('input[type="file"]'); 
+  const fileInput = editPhoto.querySelector('input[type="file"]');
   const file = fileInput.files[0]; // Get the first file
 
   // Check if a file is selected
   if (file) {
-    formData.append('upload_file', file); // Append the file to the FormData object
+    formData.append("upload_file", file); // Append the file to the FormData object
   } else {
     console.error("No file selected.");
     return; // Exit if no file is selected
   }
 
   // Send the FormData using Axios
-  axios.post('http://192.168.1.15:8080/images/profile', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data', // Set the content type
-      Authorization: `Bearer ${accessToken}` // Add Authorization header
-    }
-  })
-  .then((response) => {
-    console.log("File uploaded successfully:", response.data);
-    // Optionally, you can close the modal or update the UI here
-    photoModal.style.display = "none"; // Close the modal after upload
-  })
-  .catch((error) => {
-    console.error("Error uploading file:", error);
-  });
+  axios
+    .post("https://shop-backend-xzw2.onrender.com/images/profile", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // Set the content type
+        Authorization: `Bearer ${accessToken}`, // Add Authorization header
+      },
+    })
+    .then((response) => {
+      console.log("File uploaded successfully:", response.data);
+      // Optionally, you can close the modal or update the UI here
+      photoModal.style.display = "none"; // Close the modal after upload
+    })
+    .catch((error) => {
+      console.error("Error uploading file:", error);
+    });
 });

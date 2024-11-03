@@ -7,7 +7,7 @@ const basketOrAdd = document.querySelector(".basket");
 const productsDiv = document.querySelector(".products");
 const refresh = () => {
   axios
-    .get("http://192.168.1.15:8080/auth/refresh", {
+    .get("https://shop-backend-xzw2.onrender.com/auth/refresh", {
       headers: { Authorization: `Bearer ${refreshToken}` },
     })
     .then((res) => {
@@ -20,7 +20,7 @@ const refresh = () => {
 };
 window.addEventListener("DOMContentLoaded", (e) => {
   axios
-    .get("http://192.168.1.15:8080/prods", {
+    .get("https://shop-backend-xzw2.onrender.com/prods", {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
     .then((res) => {
@@ -70,7 +70,7 @@ prodForm.addEventListener("submit", (e) => {
 
   // Rasmni yuklash
   axios
-    .post("http://192.168.1.15:8080/images/prod", formData, {
+    .post("https://shop-backend-xzw2.onrender.com/images/prod", formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "multipart/form-data",
@@ -92,12 +92,16 @@ prodForm.addEventListener("submit", (e) => {
         prod_img: response.data.image_id,
       };
 
-      return axios.post("http://192.168.1.15:8080/prods/add", data, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
+      return axios.post(
+        "https://shop-backend-xzw2.onrender.com/prods/add",
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
     })
     .then((response) => {
       console.log("Mahsulot muvaffaqiyatli qo'shildi:", response.data);
@@ -139,12 +143,12 @@ search.addEventListener("submit", (e) => {
   const name = document.querySelector("#search");
   axios
     .get(
-      `http://192.168.1.15:8080/prods/sort?sort=${sortSelect.value}&value=${name.value}`,
+      `https://shop-backend-xzw2.onrender.com/prods/sort?sort=${sortSelect.value}&value=${name.value}`,
       { headers: { Authorization: `Bearer ${accessToken}` } }
     )
     .then((res) => {
       console.log(res.data.products);
-      productsDiv.innerHTML =''
+      productsDiv.innerHTML = "";
       for (let item of res.data.products) {
         productsDiv.innerHTML += `<a href="http://192.168.1.15:5173/product?id=${item.id}">
           <div class="products-card">

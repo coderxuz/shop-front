@@ -7,7 +7,7 @@ form.addEventListener("submit", (e) => {
   const password = document.querySelector("#password").value;
   e.preventDefault();
   axios
-    .post("http://192.168.1.15:8080/auth/login", {
+    .post("https://shop-backend-xzw2.onrender.com/auth/login", {
       email: email,
       password: password,
     })

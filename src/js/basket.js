@@ -6,7 +6,7 @@ const products = document.querySelector(".products");
 
 const refresh = () => {
   axios
-    .get("http://192.168.1.15:8080/auth/refresh", {
+    .get("https://shop-backend-xzw2.onrender.com/auth/refresh", {
       headers: { Authorization: `Bearer ${refreshToken}` },
     })
     .then((res) => {
@@ -20,7 +20,7 @@ const refresh = () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   axios
-    .get("http://192.168.1.15:8080/basket", {
+    .get("https://shop-backend-xzw2.onrender.com/basket", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -53,9 +53,12 @@ window.addEventListener("DOMContentLoaded", () => {
           const basketId = e.target.id; // Ensure this is the correct basket_id
           console.log(basketId);
           axios
-            .delete(`http://192.168.1.15:8080/basket/${e.target.id}`, {
-              headers: { Authorization: `Bearer ${accessToken}` },
-            })
+            .delete(
+              `https://shop-backend-xzw2.onrender.com/basket/${e.target.id}`,
+              {
+                headers: { Authorization: `Bearer ${accessToken}` },
+              }
+            )
             .then((res) => {
               console.log(res);
               location.reload();
@@ -75,7 +78,7 @@ window.addEventListener("DOMContentLoaded", () => {
         orderbtn.addEventListener("click", () => {
           axios
             .post(
-              "http://192.168.1.15:8080/order/add",
+              "https://shop-backend-xzw2.onrender.com/order/add",
               {},
               { headers: { Authorization: `Bearer ${accessToken}` } }
             )

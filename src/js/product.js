@@ -8,7 +8,7 @@ const params = new URLSearchParams(url.search);
 const form = document.querySelector("form");
 const refresh = () => {
   axios
-    .get("http://192.168.1.15:8080/auth/refresh", {
+    .get("https://shop-backend-xzw2.onrender.com/auth/refresh", {
       headers: { Authorization: `Bearer ${refreshToken}` },
     })
     .then((res) => {
@@ -32,7 +32,7 @@ const stock_quantity = document.getElementById("stock_quantity");
 window.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     axios
-      .get(`http://192.168.1.15:8080/basket/exist/${id}`, {
+      .get(`https://shop-backend-xzw2.onrender.com/basket/exist/${id}`, {
         headers: { Authorization: `Bearer ${refreshToken}` },
       })
       .then((res) => {
@@ -53,7 +53,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 window.addEventListener("DOMContentLoaded", () => {
   axios
-    .get(`http://192.168.1.15:8080/prods/${id}`, {
+    .get(`https://shop-backend-xzw2.onrender.com/prods/${id}`, {
       headers: { Authorization: `Bearer ${accessToken} ` },
     })
     .then((res) => {
@@ -100,7 +100,7 @@ window.addEventListener("DOMContentLoaded", () => {
             console.log(quantity);
             console.log(data);
             axios
-              .post("http://192.168.1.15:8080/basket", data, {
+              .post("https://shop-backend-xzw2.onrender.com/basket", data, {
                 headers: {
                   Authorization: `Bearer ${accessToken}`,
                 },
@@ -165,7 +165,7 @@ form.addEventListener("submit", (e) => {
     const formData = new FormData();
     formData.append("upload_file", file);
     axios
-      .post("http://192.168.1.15:8080/images/prod", formData, {
+      .post("https://shop-backend-xzw2.onrender.com/images/prod", formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "multipart/form-data",
@@ -181,7 +181,7 @@ form.addEventListener("submit", (e) => {
           image_id: res.data.image_id,
         };
         return axios
-          .put("http://192.168.1.15:8080/prods/change", data, {
+          .put("https://shop-backend-xzw2.onrender.com/prods/change", data, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
               "Content-Type": "application/json",
@@ -203,7 +203,7 @@ form.addEventListener("submit", (e) => {
       stock_quantity: stock_quantity.value,
     };
     return axios
-      .put("http://192.168.1.15:8080/prods/change", data, {
+      .put("https://shop-backend-xzw2.onrender.com/prods/change", data, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
